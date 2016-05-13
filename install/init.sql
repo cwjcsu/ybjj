@@ -111,3 +111,4 @@ CREATE TABLE `user_web_token` (
   `open_account_id` int(11) DEFAULT NULL COMMENT 'jwt对应的第三方帐号id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6303 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户jwt表';
+
