@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="./target/classes"/>
+
+    <context id="MySQL" targetRuntime="MyBatis3Simple">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 控制注释生成 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1/ybjj"
+                userId="root"
+                password="atlas@Skybility">
+        </jdbcConnection>
+
+        <!-- 生成Java 实体 -->
+        <javaModelGenerator targetPackage="com.cwjcsu.ybjj.domain" targetProject="./src/main/java">
+            <property name="rootClass" value="com.cwjcsu.ybjj.domain.AbstractEntity"/>
+        </javaModelGenerator>
+
+        <!-- 生成XML Mapper -->
+        <sqlMapGenerator targetPackage="com.cwjcsu.ybjj.mapper" targetProject="./src/main/resources">
+        </sqlMapGenerator>
+
+        <!-- 生成Java Mapper 接口 -->
+        <javaClientGenerator targetPackage="com.cwjcsu.ybjj.mapper" targetProject="./src/main/java" type="XMLMAPPER">
+            <property name="rootInterface" value="com.cwjcsu.ybjj.mapper.BaseMapper"/>
+        </javaClientGenerator>
+
+        <!-- 用户 -->
+
+        <table tableName="user_session">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+        <table tableName="user_web_token">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+        <table tableName="users" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="gender" javaType="com.cwjcsu.ybjj.domain.enums.Gender"/>
+            <columnOverride column="user_status" javaType="com.cwjcsu.ybjj.domain.enums.UserStatus"/>
+            <columnOverride column="user_type" javaType="com.cwjcsu.ybjj.domain.enums.UserType"/>
+        </table>
+
+        <table tableName="user_account">
+        </table>
+
+        <!-- ################################## -->
+
+        <!-- 合作登陆 -->
+
+        <table tableName="wx_qrcode" domainObjectName="WxQrCode">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="status" javaType="com.cwjcsu.ybjj.domain.enums.QrStatus"/>
+        </table>
+
+        <table tableName="open_account" domainObjectName="OpenAccount">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="gender" javaType="com.cwjcsu.ybjj.domain.enums.Gender"/>
+            <columnOverride column="oauth_type" javaType="com.cwjcsu.ybjj.domain.enums.OauthType"/>
+        </table>
+
+        <table tableName="login_history">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="login_type" javaType="com.cwjcsu.ybjj.domain.enums.LoginType"/>
+            <columnOverride column="result" javaType="com.cwjcsu.ybjj.domain.enums.LoginResult"/>
+        </table>
+
+        <!-- ################################## -->
+    </context>
+</generatorConfiguration>

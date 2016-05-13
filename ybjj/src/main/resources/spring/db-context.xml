@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd ">
+    <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.uname}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="initialSize" value="${db.initcon}"/>
+        <property name="maxActive" value="${db.maxcon}"/>
+        <property name="maxIdle" value="${db.maxidle}"/>
+        <property name="minIdle" value="${db.mincon}"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="validationQuery" value="select 1"/>
+        <property name="validationInterval" value="${db.validateInterval}"/>
+        <property name="connectionProperties" value="${db.connectionProperties}"/>
+    </bean>
+    <!-- 事务的配置 -->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="txManager"/>
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+	<contextName>cloudPortal</contextName>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>${CONTEXT_NAME} : %-19d{MM-dd HH:mm:ss.SSS} [%-5level] %logger{35} [%file:%line] [%thread] %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+<!-- 
+ 	<appender name="file" class="ch.qos.logback.core.FileAppender">  
+	    <file>logs/cloudPortal.log</file>  
+	    <append>true</append>  
+	    <encoder>  
+	      <Pattern>%-25d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{35} [%file:%line] - %msg%n</Pattern>
+	    </encoder>  
+  	</appender>
+ -->
+
+	<logger name="org.mybatis.spring.mapper" level="INFO" />
+	<logger name="org.mybatis.spring" level="INFO" />
+	<logger name="com.cwjcsu.ybjj.mapper" level="DEBUG" />
+	<logger name="ch.qos.logback" level="WARN" />
+	<logger name="com.mchange" level="WARN" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.apache" level="INFO" />
+	<logger name="org.quartz" level="INFO" />
+	<logger name="org.apache" level="WARN" />
+	<logger name="com.alibaba" level="WARN" />
+	<logger name="com.cwjcsu.common" level="INFO" />
+	<logger name="com.cwjcsu.ybjj" level="DEBUG" />
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

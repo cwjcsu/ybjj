@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <bean id="SpringContextUtil" class="com.cwjcsu.common.util.SpringContextUtil"/>
+    <bean id="propertyConfigurer"
+          class="com.cwjcsu.common.service.impl.SpringConfiguredPropertyService">
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="fileEncoding" value="UTF-8"/>
+        <property name="locations">
+            <list>
+                <value>classpath:/config.properties</value>
+                <value>file:///opt/ybjj/conf/config.properties</value>
+            </list>
+        </property>
+    </bean>
+    <import resource="db-context.xml"/>
+    <import resource="mvc-context.xml"/>
+
+    <!-- Spring Controller config -->
+    <context:annotation-config/>
+
+    <context:component-scan base-package="com.cwjcsu">
+        <context:exclude-filter type="regex" expression="com\.cwjcsu\.ybjj\.domain.*"/>
+        <context:exclude-filter type="regex" expression="com\.cwjcsu\.ybjj\.exception.*"/>
+        <context:exclude-filter type="regex" expression="com\.cwjcsu\.ybjj\.constant.*"/>
+    </context:component-scan>
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+</beans>

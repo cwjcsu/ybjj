@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mpweixin</artifactId>
+        <groupId>com.cwjcsu</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ybjj</artifactId>
+    <packaging>war</packaging>
+    <name>YBJJ Maven Webapp</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junitversion>4.11</junitversion>
+        <jackson.version>2.4.6</jackson.version>
+        <mybatis.version>3.3.0</mybatis.version>
+        <mybatis-spring.version>1.2.2</mybatis-spring.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>me.chanjar</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${springversion}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springversion}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${springversion}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springversion}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${springversion}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springversion}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springversion}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springversion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${springversion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springversion}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-juli</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>8.5.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junitversion}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cwjcsu</groupId>
+            <artifactId>ybjj-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>YBJJ</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>build-frontend-code</id>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <target>
+                                <echo/>
+                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/" osfamily="windows" failonerror="false">
+                                    <arg line="/c npm install"/>
+                                </exec>
+                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/" osfamily="unix" failonerror="false">
+                                    <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
+                                    <arg line="-c 'npm install'"/>
+                                </exec>
+                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/" osfamily="windows" failonerror="false">
+                                    <arg line="/c npm run wpack-${build.env}"/>
+                                </exec>
+                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/" osfamily="unix" failonerror="false">
+                                    <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
+                                    <arg line="-c 'npm run wpack-${build.env}'"/>
+                                </exec>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>build-wx-frontend-code</id>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <target>
+                                <echo/>
+                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/wx/" osfamily="windows" failonerror="false">
+                                    <arg line="/c npm install"/>
+                                </exec>
+                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/wx/" osfamily="unix" failonerror="false">
+                                    <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
+                                    <arg line="-c 'npm install'"/>
+                                </exec>
+                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/wx/" osfamily="windows" failonerror="false">
+                                    <arg line="/c npm run wpack-${build.env}"/>
+                                </exec>
+                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/wx/" osfamily="unix" failonerror="false">
+                                    <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
+                                    <arg line="-c 'npm run wpack-${build.env}'"/>
+                                </exec>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>cloudPortal</warName>
+                    <useCache>true</useCache>
+                    <packagingExcludes>node_modules/**,wx/node_modules/**,Gruntfile.js,.eslintrc, wx/.eslintrc,.babelrc,wx/.babelrc,package.json,wx/package.json,npm-shrinkwrap.json,wx/npm-shrinkwrap.json,web-src/**,wx/web-src/**,patches/**,webpack.config.js,wx/webpack.config.js,cloud_bootstrap/**</packagingExcludes>
+                    <warSourceExcludes>node_modules/**,wx/node_modules/**,Gruntfile.js,.eslintrc, wx/.eslintrc,.babelrc,wx/.babelrc,package.json,wx/package.json,web-src/**,wx/web-src/**,patches/**,webpack.config.js,wx/webpack.config.js,cloud_bootstrap/**</warSourceExcludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <!-- Mybatis生成器需要用到 -->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.36</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
