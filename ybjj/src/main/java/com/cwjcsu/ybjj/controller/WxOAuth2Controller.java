@@ -6,13 +6,17 @@
  * author                     date    comment
  * chenweijun@skybility.com  2015/8/17  Created
  */
-package com.cwjcsu.weixin;
+package com.cwjcsu.ybjj.controller;
 
 
 import com.cwjcsu.common.service.PropertyService;
 import com.cwjcsu.common.service.ServiceSupport;
 import com.cwjcsu.common.util.HttpUtil;
 import com.cwjcsu.common.util.SpringContextUtil;
+import com.cwjcsu.weixin.OAuth2Context;
+import com.cwjcsu.weixin.StateInvoker;
+import com.cwjcsu.weixin.StateMapping;
+import com.cwjcsu.weixin.WeixinService;
 import com.cwjcsu.ybjj.constant.SessionConstant;
 import com.cwjcsu.ybjj.domain.OpenAccount;
 import com.cwjcsu.ybjj.domain.User;
@@ -43,6 +47,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
+ * 网页授权访问接口
  * @author Atlas
  */
 @Controller
