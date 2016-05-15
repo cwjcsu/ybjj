@@ -1,0 +1,17 @@
+*.iml
+.DS_Store
+assets/*
+!assets/.do_not_delete
+node_modules/*
+!node_modules/.do_not_delete
+*.html
+!web-src/**/*.html
+!WEB-INF/**/*.html
+!errorPage/*.html
+*.js
+*.js.map
+*.json
+!web-src/**/*.js
+!web-src/**/*.json
+!WEB-INF/**/*.js
+!thirdparty_libs/**

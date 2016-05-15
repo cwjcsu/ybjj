@@ -1,0 +1,91 @@
+.cw-qrcode{
+  text-align: center;
+  position: relative;
+  min-width: 350px;
+  min-height: 120px;
+  .qrcode-img-c {
+    display: inline-block;
+    &.loaded {
+      background-color: #FFFFFF;
+    }
+  }
+  .qrcode-img{
+    margin: 17px;
+  }
+
+  .wechat-state-tips{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -60px;
+    margin-left: -167px;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    width: 334px;
+    height: 121px;
+    border-radius: 5px;
+    .wechatTips-icon {
+      float: left;
+      margin-left: 15px;
+      margin-top: 35px;
+      width: 60px;
+      height: 60px;
+    }
+    .wechatTips-Wrap {
+      float: left;
+      width: 220px;
+      margin-left: 20px;
+      text-align: left;
+      margin-top: 13px;
+      .wechat-tips-head {
+        font-size: 14px;
+      }
+      .wechat-tips-body {
+        line-height: 25px;
+        margin-top: 7px;
+        font-size: 12px;
+        display: table;
+        height: 60px;
+        .middle{
+          display: table-cell;
+          vertical-align: middle;
+
+          .inner{
+            .tips-time {
+              color: #46c017;
+            }
+            .click-me{
+              cursor: pointer;
+              color: #46c017;
+            }
+            a{
+              color : #46c017
+            }
+          }//end inner
+
+        }//end middle
+
+      }//end wechat-tips-body
+    }//end wechatTips-Wrap
+
+  }
+
+  .countdown-dialog > .wechatTips-icon{
+      background: url(./images/ok.png) no-repeat;
+  }
+
+  .reject-dialog > .wechatTips-icon{
+      background: url(./images/reject.png) no-repeat;
+  }
+
+  .timeout-dialog > .wechatTips-icon{
+      background: url(./images/timeout.png) no-repeat;
+  }
+
+  .weixin-error-dialog > .wechatTips-icon{
+    background: url(./images/weixin-error.png) no-repeat;
+  }
+
+
+}

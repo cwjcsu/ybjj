@@ -1,0 +1,30 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh-cmn-Hans"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="zh-cmn-Hans"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="zh-cmn-Hans"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10" lang="zh-cmn-Hans"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="zh-cmn-Hans"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <title>{%=o.htmlWebpackPlugin.options.title || 'Webpack App'%}</title>
+    <link rel="shortcut icon" href="./common/images/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <script src="./common/javascripts/modernizr.min.js"></script>
+
+    <link href="./common/styles/noscript.css" rel="stylesheet">
+
+    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+    {% } %}
+</head>
+<body>
+
+{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+<script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+{% } %}
+</body>
+</html>

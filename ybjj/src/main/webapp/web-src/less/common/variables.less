@@ -1,0 +1,77 @@
+
+//定义一些公用常量和公用函数
+
+@header-bg-color : #0d67b7;//header栏的背景颜色
+@header-height : 52px;//header栏的高度
+
+@support-min-width: 980px;
+@support-max-width: 1440px;
+@support-min-height: 550px;
+@top-notify-height : 42px;
+
+//** 下拉菜单箭头
+.dropdown-menu-arrow(@left : 50%; @menu-top: 10px;) {
+  margin-top: @menu-top !important;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: @left;
+    width: 14px;
+    height: 8px;
+    margin-left: -7px;
+    margin-top: -8px;
+    background: url("./images/narrow.png") center no-repeat;
+  }
+}
+.dropdown-menu-arrow__bottom(@left : 50%; @menu-bottom: 10px;) {
+  margin-bottom: @menu-bottom !important;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: @left;
+    width: 14px;
+    height: 8px;
+    margin-left: -7px;
+    margin-bottom: -8px;
+    background: url("./images/narrow-bottom.png") center no-repeat;
+  }
+}
+.dropdown-menu-arrow__grey(@left : 50%; @menu-top: 10px;) {
+  margin-top: @menu-top !important;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: @left;
+    width: 14px;
+    height: 8px;
+    margin-left: -7px;
+    margin-top: -8px;
+    background: url("./images/narrow-grey.png") center no-repeat;
+  }
+}
+
+.vertical-middle(@height : 20px) {
+  height : @height;
+  line-height : @height;
+}
+
+// 文本换行
+.word-wrap() {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+// 文本溢出显示...
+.text-ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.can-click() {
+  cursor: pointer;
+  text-decoration: none;
+}
