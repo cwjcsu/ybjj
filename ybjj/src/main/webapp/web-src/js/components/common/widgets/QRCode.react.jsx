@@ -251,9 +251,6 @@ var QRCode = React.createClass({
         var style = {
             width: this.props.width,
             height: this.props.height,
-            border: 'none',
-            backgroundImage: this.state.QRCode ? 'url("' + this.state.QRCode + '")' : null,
-            backgroundSize: 'cover'
         };
 
         var sceneValue = "登录";
@@ -272,7 +269,7 @@ var QRCode = React.createClass({
             <div>
                 <div className="cw-qrcode">
                     <div className='qrcode-img-c'>
-                        <img className={qrcodeImgCls} src={this.state.QRCode}></img>
+                        <img className={qrcodeImgCls} src={this.state.QRCode} style={style} ></img>
                         <div className={qrcodeMsgCls}><span>{this.state.loadMsg}</span></div>
                     </div>
                     <div className={countdownDialogClass}>
@@ -341,7 +338,7 @@ var QRCode = React.createClass({
                         </div>
                     </div>
                 </div>
-                <div className={bottomTitleCls}>微信扫一扫，获取本机远程桌面</div>
+                <div className={bottomTitleCls}>微信扫一扫登录</div>
             </div>
         );
     }

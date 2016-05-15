@@ -23,17 +23,26 @@ var Login = React.createClass({
     componentWillUnmount: function () {
     },
 
+    onScanQRCodeSuccess: function (data) {
+        AuthAction.dispatcherJwt(data.jwt);
+        Logger.log("scanSuccess  ", data);
+        window.location.href = "/index.html";
+    },
+    onScanQRCodeError(data){
+        Logger.log(data.msg)
+    },
     render: function () {
         return (
             <div className="login-panel-wrapper">
+                <h2 className="login-title">夜半歌声</h2>
                 <div className="login-panel">
                     <QRCode
                         sceneKey={WeixinConstant.sceneKey.SCENE_KEY_LOGIN} width={225}
-                        height={225}/>
+                        height={225} onSuccess={this.onScanQRCodeSuccess} onError={this.onScanQRCodeError}/>
                 </div>
             </div>
         );
     }
 });
 
-ReactDOM.render(<Login/>, document.body);
+ReactDOM.render(<Login/>, document.getElementById('domBody'));

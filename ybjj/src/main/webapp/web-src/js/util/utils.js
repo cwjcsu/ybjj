@@ -1,3 +1,4 @@
+var AppConstant = require('../constants/AppConstant.js');
 var utils = {
         noop: function () {
 
@@ -229,6 +230,10 @@ var utils = {
         },
         setCursorPosition: function (input, pos) {
             this.setSelectionRange(input, pos, pos);
+        },
+        redirectToLogin: function (params) {
+            params = params || '';
+            window.location.href = AppConstant.PORTAL_CONTEXT_PATH + AppConstant.LOGIN_PAGE + params;
         }
     }
     ;

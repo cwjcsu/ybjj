@@ -5,6 +5,9 @@ import com.cwjcsu.common.util.DictImpl;
 import com.cwjcsu.common.util.JsonUtil;
 import com.cwjcsu.common.util.StringUtil;
 import com.cwjcsu.ybjj.domain.enums.QrStatus;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 
 public class WxQrCode extends AbstractEntity {
@@ -383,6 +386,42 @@ public class WxQrCode extends AbstractEntity {
             setAttachement(JsonUtil.jsonEncode(t));
         } else {
             setAttachement(null);
+        }
+    }
+
+    /**
+     * 在seconds秒后是否过期
+     *
+     * @param seconds
+     * @return
+     */
+    public boolean isExpiredAfterSeconds(int seconds) {
+        return getValidSeconds() >= seconds;
+    }
+
+    /**
+     * 二维码是否可用（未扫描或者已扫描但业务还没有做完）
+     *
+     * @return
+     */
+    public boolean isActive() {
+        return !StringUtil.in(getStatus(), QrStatus.SUCCESS, QrStatus.REJECTED, QrStatus.EXPIRED,QrStatus.FAIL);
+    }
+
+    /**
+     * 从现在时刻算起，获取二维码有效的时间（单位：秒）
+     *
+     * @return
+     */
+    public int getValidSeconds() {
+        return (int) ((getCreateTime().getTime() + getExpireSeconds() * 1000 - System.currentTimeMillis()) / 1000);
+    }
+
+    public String getQrCodeUrl() {
+        try {
+            return "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + URLEncoder.encode(getTicket(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            return "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + getTicket();
         }
     }
 }

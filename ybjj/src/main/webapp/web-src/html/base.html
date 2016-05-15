@@ -6,25 +6,21 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang="zh-cmn-Hans"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Expires" CONTENT="0">
-    <meta http-equiv="Cache-Control" CONTENT="no-cache">
-    <meta http-equiv="Pragma" CONTENT="no-cache">
-    <title>{%=o.htmlWebpackPlugin.options.title || 'Webpack App'%}</title>
-    <link rel="shortcut icon" href="./common/images/favicon.ico">
+    <title><%=htmlWebpackPlugin.options.title || 'Webpack App'%></title>
+    <link rel="shortcut icon" href="./common/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
-    <script src="./common/javascripts/modernizr.min.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="月夜歌声">
+    <!--[if IE]>
+    <script src="./common/shim.min.js"></script>
+    <![endif]-->
 
-    <link href="./common/styles/noscript.css" rel="stylesheet">
-
-    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
-    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
-    {% } %}
 </head>
-<body>
+<body class="body-cls">
+    <div id="domBody">
 
-{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-<script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-{% } %}
+    </div>
 </body>
 </html>

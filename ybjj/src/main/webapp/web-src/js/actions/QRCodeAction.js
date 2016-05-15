@@ -1,4 +1,5 @@
 var AjaxAPI = require('../services/AjaxAPI.js');
+var AppConstant = require('../constants/AppConstant');
 
 var QRCodeAction = {
     /**
@@ -8,7 +9,7 @@ var QRCodeAction = {
      * @returns {*}
      */
     getQRCode:function(sceneKey,userId){
-        return AjaxAPI.request('/api/getWxQrCode',{
+        return AjaxAPI.request(AppConstant.PORTAL_CONTEXT_PATH + '/api/oauth/getWxQrCode',{
             data: {
                 sceneKey : sceneKey,
                 userId : userId
@@ -22,7 +23,7 @@ var QRCodeAction = {
      * @param sceneKey 场景Key，不能为空
      */
     pollScanQRCodeResult:function(sceneKey){
-        return AjaxAPI.request('/api/checkScanWxResult',{
+        return AjaxAPI.request(AppConstant.PORTAL_CONTEXT_PATH + '/api/oauth/checkScanWxResult',{
             data: {
                 sceneKey : sceneKey
             },
