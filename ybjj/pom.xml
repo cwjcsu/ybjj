@@ -193,17 +193,21 @@
                         <configuration>
                             <target>
                                 <echo/>
-                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/" osfamily="windows" failonerror="false">
+                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/" osfamily="windows"
+                                      failonerror="false">
                                     <arg line="/c npm install"/>
                                 </exec>
-                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/" osfamily="unix" failonerror="false">
+                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/" osfamily="unix"
+                                      failonerror="false">
                                     <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
                                     <arg line="-c 'npm install'"/>
                                 </exec>
-                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/" osfamily="windows" failonerror="false">
+                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/" osfamily="windows"
+                                      failonerror="false">
                                     <arg line="/c npm run wpack-${build.env}"/>
                                 </exec>
-                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/" osfamily="unix" failonerror="false">
+                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/" osfamily="unix"
+                                      failonerror="false">
                                     <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
                                     <arg line="-c 'npm run wpack-${build.env}'"/>
                                 </exec>
@@ -239,7 +243,7 @@
                             <!--<goal>run</goal>-->
                         <!--</goals>-->
                     <!--</execution>-->
-                <!--</executions>-->
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -248,8 +252,12 @@
                 <configuration>
                     <warName>cloudPortal</warName>
                     <useCache>true</useCache>
-                    <packagingExcludes>node_modules/**,wx/node_modules/**,Gruntfile.js,.eslintrc, wx/.eslintrc,.babelrc,wx/.babelrc,package.json,wx/package.json,npm-shrinkwrap.json,wx/npm-shrinkwrap.json,web-src/**,wx/web-src/**,patches/**,webpack.config.js,wx/webpack.config.js,cloud_bootstrap/**</packagingExcludes>
-                    <warSourceExcludes>node_modules/**,wx/node_modules/**,Gruntfile.js,.eslintrc, wx/.eslintrc,.babelrc,wx/.babelrc,package.json,wx/package.json,web-src/**,wx/web-src/**,patches/**,webpack.config.js,wx/webpack.config.js,cloud_bootstrap/**</warSourceExcludes>
+                    <packagingExcludes>node_modules/**,wx/node_modules/**,Gruntfile.js,.eslintrc,
+                        wx/.eslintrc,.babelrc,wx/.babelrc,package.json,wx/package.json,npm-shrinkwrap.json,wx/npm-shrinkwrap.json,web-src/**,wx/web-src/**,patches/**,webpack.config.js,wx/webpack.config.js,cloud_bootstrap/**
+                    </packagingExcludes>
+                    <warSourceExcludes>node_modules/**,wx/node_modules/**,Gruntfile.js,.eslintrc,
+                        wx/.eslintrc,.babelrc,wx/.babelrc,package.json,wx/package.json,web-src/**,wx/web-src/**,patches/**,webpack.config.js,wx/webpack.config.js,cloud_bootstrap/**
+                    </warSourceExcludes>
                 </configuration>
                 <executions>
                     <execution>
