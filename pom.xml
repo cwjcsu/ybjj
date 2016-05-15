@@ -13,7 +13,20 @@
         <springversion>4.1.7.RELEASE</springversion>
         <build.env></build.env>
     </properties>
-
+    <profiles>
+        <profile>
+            <id>development</id>
+            <properties>
+                <build.env>development</build.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <build.env>production</build.env>
+            </properties>
+        </profile>
+    </profiles>
     <repositories>
         <repository>
             <snapshots />
