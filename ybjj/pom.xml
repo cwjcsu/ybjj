@@ -204,12 +204,13 @@
                                 </exec>
                                 <exec executable="cmd" dir="${project.basedir}/src/main/webapp/" osfamily="windows"
                                       failonerror="false">
-                                    <arg line="/c npm run wpack-${build.env}"/>
+                                    <env key="NODE_ENV" value="${build.env}"/>
+                                    <arg line="/c  webpack"/>
                                 </exec>
                                 <exec executable="bash" dir="${project.basedir}/src/main/webapp/" osfamily="unix"
                                       failonerror="false">
-                                    <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
-                                    <arg line="-c 'npm run wpack-${build.env}'"/>
+                                    <env key="NODE_ENV" value="${build.env}"/>
+                                    <arg line="-c webpack"/>
                                 </exec>
                             </target>
                         </configuration>
