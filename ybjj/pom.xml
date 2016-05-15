@@ -182,7 +182,7 @@
     <build>
         <finalName>YBJJ</finalName>
         <plugins>
-         <!--   <plugin>
+             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.7</version>
@@ -213,33 +213,33 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>build-wx-frontend-code</id>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            <target>
-                                <echo/>
-                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/wx/" osfamily="windows" failonerror="false">
-                                    <arg line="/c npm install"/>
-                                </exec>
-                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/wx/" osfamily="unix" failonerror="false">
-                                    <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
-                                    <arg line="-c 'npm install'"/>
-                                </exec>
-                                <exec executable="cmd" dir="${project.basedir}/src/main/webapp/wx/" osfamily="windows" failonerror="false">
-                                    <arg line="/c npm run wpack-${build.env}"/>
-                                </exec>
-                                <exec executable="bash" dir="${project.basedir}/src/main/webapp/wx/" osfamily="unix" failonerror="false">
-                                    <env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>
-                                    <arg line="-c 'npm run wpack-${build.env}'"/>
-                                </exec>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                    <!--<execution>-->
+                        <!--<id>build-wx-frontend-code</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<configuration>-->
+                            <!--<target>-->
+                                <!--<echo/>-->
+                                <!--<exec executable="cmd" dir="${project.basedir}/src/main/webapp/wx/" osfamily="windows" failonerror="false">-->
+                                    <!--<arg line="/c npm install"/>-->
+                                <!--</exec>-->
+                                <!--<exec executable="bash" dir="${project.basedir}/src/main/webapp/wx/" osfamily="unix" failonerror="false">-->
+                                    <!--<env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>-->
+                                    <!--<arg line="-c 'npm install'"/>-->
+                                <!--</exec>-->
+                                <!--<exec executable="cmd" dir="${project.basedir}/src/main/webapp/wx/" osfamily="windows" failonerror="false">-->
+                                    <!--<arg line="/c npm run wpack-${build.env}"/>-->
+                                <!--</exec>-->
+                                <!--<exec executable="bash" dir="${project.basedir}/src/main/webapp/wx/" osfamily="unix" failonerror="false">-->
+                                    <!--<env key="PATH" path="${env.PATH}:/usr/local/bin:/usr/bin"/>-->
+                                    <!--<arg line="-c 'npm run wpack-${build.env}'"/>-->
+                                <!--</exec>-->
+                            <!--</target>-->
+                        <!--</configuration>-->
+                        <!--<goals>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -259,7 +259,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>

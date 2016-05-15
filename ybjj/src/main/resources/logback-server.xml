@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+	<contextName>cloudPortal</contextName>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>${CONTEXT_NAME} : %-19d{MM-dd HH:mm:ss.SSS} [%-5level] %logger{35} [%file:%line] [%thread] %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="ybjj" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoding>UTF-8</encoding>
+		<file>/opt/ybjj/logs/ybjj.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>logs/agent_tray_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- keep 10 days' worth of history -->
+			<maxHistory>10</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<Pattern>%-25d{yyyy-MM-dd HH:mm:ss.SSS,Asia/Shanghai} [%thread] %-5level %mdc %logger{35} [%file:%line] - %msg%n</Pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<logger name="org.mybatis.spring.mapper" level="INFO" />
+	<logger name="org.mybatis.spring" level="INFO" />
+	<logger name="com.cwjcsu.ybjj.mapper" level="DEBUG" />
+	<logger name="ch.qos.logback" level="WARN" />
+	<logger name="com.mchange" level="WARN" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.springframework.web" level="INFO" />
+	<logger name="org.apache" level="INFO" />
+	<logger name="org.quartz" level="INFO" />
+	<logger name="org.apache" level="WARN" />
+	<logger name="com.alibaba" level="WARN" />
+	<logger name="com.cwjcsu.common" level="INFO" />
+	<logger name="com.cwjcsu.ybjj" level="DEBUG" />
+
+	<root level="INFO">
+		<appender-ref ref="ybjj" />
+	</root>
+</configuration>
