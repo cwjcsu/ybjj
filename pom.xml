@@ -11,7 +11,7 @@
 
     <properties>
         <springversion>4.1.7.RELEASE</springversion>
-        <build.env></build.env>
+        <build.env>development</build.env>
     </properties>
     <profiles>
         <profile>
