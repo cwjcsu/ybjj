@@ -251,7 +251,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <warName>cloudPortal</warName>
+                    <warName>ybjj</warName>
                     <useCache>true</useCache>
                     <packagingExcludes>node_modules/**,wx/node_modules/**,Gruntfile.js,.eslintrc,
                         wx/.eslintrc,.babelrc,wx/.babelrc,package.json,wx/package.json,npm-shrinkwrap.json,wx/npm-shrinkwrap.json,web-src/**,wx/web-src/**,patches/**,webpack.config.js,wx/webpack.config.js,cloud_bootstrap/**

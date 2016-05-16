@@ -26,7 +26,7 @@ var output_options = {
 };
 var createHtmlDef = function(opts){
     return new HtmlWebpackPlugin({
-        title: '夜半鸡叫',
+        title: '月夜歌声',
         filename: opts.path,
         template: './web-src/html/base.html',
         chunks: opts.chunks,
