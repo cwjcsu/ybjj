@@ -2,6 +2,7 @@ package com.cwjcsu.ybjj.service.impl;
 
 
 import com.cwjcsu.common.util.IOUtil;
+import com.cwjcsu.common.util.StringUtil;
 import com.cwjcsu.ybjj.domain.User;
 import com.cwjcsu.ybjj.domain.UserWebToken;
 import com.cwjcsu.ybjj.mapper.UserMapper;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.crypto.spec.SecretKeySpec;
 import java.io.ObjectInputStream;
 import java.security.Key;
 import java.util.HashMap;
@@ -48,17 +50,8 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private static Key loadAuthSigningKey() {
-        Key key = null;
-        ObjectInputStream oin = null;
-        try {
-            oin = new ObjectInputStream(AuthServiceImpl.class.getResourceAsStream("/authsigning.key"));
-            key = (Key) oin.readObject();
-        } catch (Exception e) {
-            logger.error("load auth signing key failed", e);
-        } finally {
-           IOUtil.closeQuietly(oin);
-        }
-        return key;
+        final byte[] keyBytes=new byte[]{'7','D','h','n','C','8','y','Y'};
+        return new SecretKeySpec(keyBytes, "AES");
     }
 
     public String getJWTForTokenId(String tokenId) {
@@ -89,5 +82,9 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Jws<Claims> parseJwt(String data) throws ExpiredJwtException, MalformedJwtException, SignatureException{
         return Jwts.parser().setSigningKey(AuthServiceImpl.getAuthSigningKey()).parseClaimsJws(data);
+    }
+
+    public static void main(String[] args){
+        System.out.println(StringUtil.randomPasswordStr(8));
     }
 }
